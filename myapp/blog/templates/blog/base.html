@@ -1,0 +1,202 @@
+{% load static %}
+<!DOCTYPE html>
+	<html lang="zxx" class="no-js">
+	<head>
+		<!-- Mobile Specific Meta -->
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+		<!-- Favicon-->
+		<link rel="shortcut icon" href="img/fav.png">
+		<!-- Author Meta -->
+		<meta name="author" content="colorlib">
+		<!-- Meta Description -->
+		<meta name="description" content="">
+		<!-- Meta Keyword -->
+		<meta name="keywords" content="">
+		<!-- meta character set -->
+		<meta charset="UTF-8">
+		<!-- Site Title -->
+		<title>Travel</title>
+
+		<link href="https://fonts.googleapis.com/css?family=Poppins:100,200,400,300,500,600,700" rel="stylesheet">
+			<!--
+			CSS
+			============================================= -->
+			<link rel="stylesheet" href={% static "home/css/linearicons.css" %}>
+			<link rel="stylesheet" href={% static "home/css/font-awesome.min.css" %}>
+			<link rel="stylesheet" href={% static "home/css/bootstrap.css" %}>
+			<link rel="stylesheet" href={% static "home/css/magnific-popup.css" %}>
+			<link rel="stylesheet" href={% static "home/css/jquery-ui.css" %}>
+			<link rel="stylesheet" href={% static "home/css/nice-select.css" %}>
+			<link rel="stylesheet" href={% static "home/css/animate.min.css" %}>
+			<link rel="stylesheet" href={% static "home/css/owl.carousel.css" %}>
+			<link rel="stylesheet" href={% static "home/css/main.css" %}>
+			<link rel="stylesheet" href={% static "blog/two/css/style.css" %}>
+		 	<link rel="stylesheet" href={% static "blog/two/css/bootstrap.css" %}>
+			<link rel="stylesheet" href={% static "blog/two/fonts/ionicons/css/ionicons.min.css" %}>
+    		<link rel="stylesheet" href={% static "blog/two/fonts/fontawesome/css/font-awesome.min.css" %}>
+		</head>
+		<body>
+			<header id="header">
+				<div class="header-top">
+					<div class="container">
+			  		<div class="row align-items-center">
+			  			<div class="col-lg-6 col-sm-6 col-6 header-top-right">
+							<div class="header-social">
+								<a href="#"><i class="fa fa-facebook"></i></a>
+								<a href="#"><i class="fa fa-twitter"></i></a>
+							</div>
+			  			</div>
+			  		</div>
+					</div>
+				</div>
+				<div class="container main-menu">
+					<div class="row align-items-center justify-content-between d-flex">
+				      <div id="logo">
+<!--				        <a href="{% url 'Home' %}"><img src="img/logo.png" alt="" title="" /></a>-->
+				      </div>
+				      <nav id="nav-menu-container">
+				        <ul class="nav-menu">
+				           <li><a href="{% url 'Home' %}">Home</a></li>
+				          <li><a href="{% url 'About' %}">About</a></li>
+<!--				          <li><a href="packages.html">Packages</a></li>-->
+				          <li><a href="{% url 'Hotels' %}">Hotels</a></li>
+							<li><a href="{% url 'Destinations' %}">Destinations</a></li>
+							<li class="nav-item">
+							  {% if user.is_authenticated %}
+								<li class="nav-item">
+								<a class="nav-link" href="{% url 'post-create' %}">New Post</a>
+								</li>
+								<li class="nav-item">
+								<a class="nav-link" href="{% url 'profile' %}">Profile</a>
+								</li>
+								<li class="nav-item">
+								<a class="nav-link" href="{% url 'logout' %}">Logout</a>
+								</li>
+								<li class="nav-item"><a href="{% url 'Blog' %}">Blog</a></li>
+								<a class="nav-link" href="{% url 'Contact' %}">Contact</a>
+							  {% else %}
+							  <a class="nav-link" href="{% url 'Contact' %}">Contact</a>
+							</li>
+							{% endif %}
+
+
+				        </ul>
+				      </nav><!-- #nav-menu-container -->
+					</div>
+				</div>
+			</header><!-- #header -->
+			  
+			<!-- start banner Area -->
+			<section class="about-banner relative">
+				<div class="overlay overlay-bg"></div>
+				<div class="container">				
+					<div class="row d-flex align-items-center justify-content-center">
+						<div class="about-content col-lg-12">
+							<h1 class="text-white">
+								Blog/Testimonials
+							</h1>	
+							<p class="text-white link-nav"><a href="{% url 'Home'%}">Home </a>  <span class="lnr lnr-arrow-right"></span>  <a href="blog.html"> Blog</a></p>
+						</div>	
+					</div>
+				</div>
+			</section>
+			<!-- End banner Area -->	
+
+			<!-- Start destinations Area -->
+
+    <section class="site-section bg-light">
+      <div class="container">
+
+        <div class="row mb-5">
+			  <main role="main" class="container">
+      <div class="row">
+        <div class="col-md-8">
+          {% if messages %}
+            {% for message in messages %}
+              <div class="alert alert-{{ message.tags }}">
+                {{ message }}
+              </div>
+            {% endfor %}
+          {% endif %}
+          {% block content %}{% endblock %}
+        </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+			<!-- start footer Area -->		
+			<footer class="footer-area section-gap">
+				<div class="container">
+
+					<div class="row">
+						<div class="col-lg-3  col-md-6 col-sm-6">
+							<div class="single-footer-widget">
+								<h6>About NepTour</h6>
+								<p>
+									NEPTOUR is the web app where the visitors will get effective information
+									about cultural and natural places differently. The ratings of the hotels
+									are determined in accordance with the features.
+								</p>
+							</div>
+						</div>
+
+						<div class="col-lg-3  col-md-6 col-sm-6">
+							<div class="single-footer-widget">
+								<h6>Navigation Links</h6>
+								<div class="row">
+									<div class="col">
+										<ul>
+											<li><a href="{% url 'Home' %}">Home</a></li>
+											<li><a href="{% url 'About' %}">About</a></li>
+											<li><a href="{% url 'Hotels' %}">Hotels</a></li>
+										</ul>
+									</div>
+									<div class="col">
+										<ul>
+											<li><a href="{% url 'Destinations' %}">Destinations</a></li>
+											 {% if user.is_authenticated %}
+											<li><a href="{% url 'Blog' %}">Blog</a></li>
+											<li><a href="{% url 'Contact' %}">Contact</a></li>
+											{% else %}
+											<li><a href="{% url 'Contact' %}">Contact</a></li>
+											{% endif %}
+										</ul>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="row footer-bottom d-flex justify-content-between align-items-center">
+						<p class="col-lg-8 col-sm-12 footer-text m-0">
+Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | Made  <i class="fa fa-heart-o" aria-hidden="true"></i> by Team<a href="#" target="_blank">_CodeBlack</a>
+</p>
+						<div class="col-lg-4 col-sm-12 footer-social">
+							<a href="#"><i class="fa fa-facebook"></i></a>
+							<a href="#"><i class="fa fa-twitter"></i></a>
+							<a href="#"><i class="fa fa-dribbble"></i></a>
+							<a href="#"><i class="fa fa-behance"></i></a>
+						</div>
+					</div>
+				</div>
+			</footer>
+			<!-- End footer Area -->	
+
+
+			<script src={% static "home/js/vendor/jquery-2.2.4.min.js" %}></script>
+			<script src={% static "home/js/popper.min.js" %}></script>
+			<script src={% static "home/js/vendor/bootstrap.min.js" %}></script>
+			<script src={% static "home/https://maps.googleapis.com/maps/api/js?key=AIzaSyBhOdIF3Y9382fqJYt5I_sswSrEw5eihAA" %}></script>
+ 			<script src={% static "home/js/jquery-ui.js" %}></script>
+  			<script src={% static "home/js/easing.min.js" %}></script>
+			<script src={% static "home/js/hoverIntent.js" %}></script>
+			<script src={% static "home/js/superfish.min.js" %}></script>
+			<script src={% static "home/js/jquery.ajaxchimp.min.js" %}></script>
+			<script src={% static "home/js/jquery.magnific-popup.min.js" %}></script>
+			<script src={% static "home/js/jquery.nice-select.min.js" %}></script>
+			<script src={% static "home/js/owl.carousel.min.js" %}></script>
+			<script src={% static "home/js/mail-script.js" %}></script>
+			<script src={% static "home/js/main.js" %}></script>
+		</body>
+	</html>
